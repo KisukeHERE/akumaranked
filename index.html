@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="img/logo2.png">
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>AkumaData</title>
+    </head>
+    <body>
+        <header>
+            <div class="header">
+                <div class="nav">
+                    <a class="only-pc" href="index.html"><img src="img/logo2.png" height="60px"></a>
+                    <a href="index.html"><h1>AKUMA.RKD</h1></a>
+                    <a class="only-pc" href="patrick.html">Patrick</a>
+                    <a class="only-pc" href="lucas.html">Lucas</a>
+                    <a class="only-pc" href="teo.html">Téo</a>
+                    <a class="only-pc" href="maeva.html">Maëva</a>
+                    <a class="only-pc" href="malcom.html">Malcom</a>
+                    <a class="only-pc" href="rayane.html">Rayane</a>
+                    <a class="only-pc" href="corentin.html">Corentin</a>
+                    <a class="only-pc" href="https://www.twitch.tv/legrafist" target="_blank">Romain</a>
+                    <a class="only-phone open-menu-phone"><i class="fa-solid fa-bars"></i></a>
+                </div>
+            </div>
+            <div class="only-phone bg-menu-phone" id="menu-phone">
+                <div class="only-phone menu-phone">
+                    <div class="only-phone top-menu-phone">
+                        <a class="only-phone close-menu-phone"><i class="fa-solid fa-xmark"></i></a>
+                    </div>
+                    <a class="only-phone" href="patrick.html"><img src="img/icons/patrick.webp">Patrick</a>
+                    <a class="only-phone" href="lucas.html"><img src="img/icons/lucas.webp">Lucas</a>
+                    <a class="only-phone" href="teo.html"><img src="img/icons/teo.webp">Téo</a>
+                    <a class="only-phone" href="maeva.html"><img src="img/icons/maeva.webp">Maëva</a>
+                    <a class="only-phone" href="malcom.html"><img src="img/icons/malcom.webp">Malcom</a>
+                    <a class="only-phone" href="rayane.html"><img src="img/icons/rayane.webp">Rayane</a>
+                    <a class="only-phone" href="corentin.html"><img src="img/icons/corentin.webp">Corentin</a>
+                    <a class="only-phone" href="https://www.twitch.tv/legrafist" target="_blank"><img src="img/icons/romain.webp">Romain</a>
+                </div>
+            </div>
+        </header>
+        <div class="logo-txt">
+            <img src="img/logo2.png" width="200px">
+                <h1>AKUMA</h1><h2>.RKD</h2>
+            
+        </div>
+        
+        <div class="title-1">
+
+            <h1>Les stats de la Akuma en temps réel</h1>
+            <h2> Qui fera le plus peur au ladder ?</h2>
+
+        </div>
+        
+
+        <!-- SYSTEME DE CARTES DES JOUEURS-->
+        <div class="select">
+            <button class="prev"><i class="fa-solid fa-chevron-left"></i></button>
+            
+            <div class="card-stack">
+            
+                <div class="card" id="patrick" onclick="goToPage()">
+                    <img src="img/index/patrick.webp" width="400px">
+                    <div class="shadow-img"></div>
+                    <h1>Patrick</h1>
+                </div>
+
+                <div class="card" id="lucas" onclick="goToPage()">
+                    <img src="img/index/lucas.webp" width="400px">
+                    <div class="shadow-img"></div>
+                    <h1>Lucas</h1>
+                </div>
+
+                <div class="card" id="teo" onclick="goToPage()">
+                    <img src="img/index/teo.webp" width="400px">
+                    <div class="shadow-img"></div>
+                    <h1>Téo</h1>
+                </div>
+
+                <div class="card" id="maeva" onclick="goToPage()">
+                    <img src="img/index/maeva.webp" width="330px">
+                    <div class="shadow-img"></div>
+                    <h1>Maëva</h1>
+                </div>
+
+                <div class="card" id="malcom" onclick="goToPage()">
+                    <img src="img/index/malcom.webp" width="300px">
+                    <div class="shadow-img"></div>
+                    <h1>Malcom</h1>
+                </div>
+
+                <div class="card" id="rayane" onclick="goToPage()">
+                    <img src="img/index/rayane.webp">
+                    <div class="shadow-img"></div>
+                    <h1>Rayane</h1>
+                </div>
+
+                <div class="card" id="corentin" onclick="goToPage()">
+                    <img src="img/index/corentin.webp" width="300px">
+                    <div class="shadow-img"></div>
+                    <h1>Corentin</h1>
+                </div>
+
+            </div>
+            
+            <button class="next"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+
+
+        <footer>
+            <p>AKUMA.RKD is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc</p>
+        </footer>
+        <script src="scripts/script.js"></script>
+    </body>
+</html>
