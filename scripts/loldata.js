@@ -22,7 +22,7 @@ let matchList = {
 }
 
 
-// en local
+// en local (uwu)
 let matchesDataListLucas = [];
 let matchesDataListPatrick = [];
 let matchesDataListMaeva = [];
@@ -31,7 +31,7 @@ let matchesData = [];
 
 let sumsJson = [];
 
-const APIKEY = 'RGAPI-6c55c726-866d-4af4-a905-ad1be80bc967';
+const APIKEY = 'RGAPI-e6ecc8e0-6c2e-42b4-818a-40fc871210da';
 const linkMatches = 'https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/';
 const linkMatchData = 'https://europe.api.riotgames.com/lol/match/v5/matches/';
 /*
