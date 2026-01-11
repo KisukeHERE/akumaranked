@@ -45,13 +45,23 @@ async function getSumsJSON() {
     }
 }
 */
+let testAPIKEY;
+
+async function testApiKey() {
+    const response = await fetch('http://localhost:3000/apikeyakumaranked');
+    const data = await response.json();
+    testAPIKEY = data;
+}
+
+
+
 
 // recup les dernieres games des joueurs
 
 async function getMatches(puuid, player) {
 
     try {
-        const response = await fetch(linkMatches + puuid + '/ids?type=ranked&start=0&count=5&api_key=' + APIKEY);
+        const response = await fetch(linkMatches + puuid + '/ids?type=ranked&start=0&count=5&api_key=' + testAPIKEY);
         const data = await response.json();
 
 
@@ -68,7 +78,7 @@ async function getMatches(puuid, player) {
 
 async function getMatchData(tag) {
     try {
-        const response = await fetch(linkMatchData + tag + '?api_key=' + APIKEY);
+        const response = await fetch(linkMatchData + tag + '?api_key=' + testAPIKEY);
         const data = await response.json();
         console.log(data);
         return data;
@@ -330,6 +340,7 @@ function pushDataOnPage(playerlist, playername) {
 
 async function executeAll() {
     const player = isOnPage();
+    await testApiKey();
     await getMatches(puuid[player], player);
     await getAllMatchsData(player);
     pushDataOnPage(matchesData, player);
