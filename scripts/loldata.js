@@ -551,7 +551,7 @@ function pushDataOnPage(playerlist, playername) {
                 } else {
                     profile += `<div class="rank-wr">
                                     <div class="rank">
-                                        <img src="img/rank/Unranked.webp">
+                                        <img src="img/rank/UNRANKED.webp">
                                         <span>pas classé</span>
                                     </div>
                                 </div>`;
