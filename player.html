@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,18 +12,37 @@
         <header>
             <div class="header">
                 <div class="nav">
-                    <a href="index.html"><img src="img/logo2.png" height="60px"></a>
+                    <a class="only-pc" href="index.html"><img src="img/logo2.png" height="60px"></a>
                     <a href="index.html"><h1>AKUMA.RKD</h1></a>
-                    <a href="patrick.html">Patrick</a>
-                    <a href="lucas.html">Lucas</a>
-                    <a href="teo.html">Téo</a>
-                    <a href="maeva.html">Maëva</a>
-                    <a href="malcom.html">Malcom</a>
-                    <a href="https://www.twitch.tv/legrafist" target="_blank">Romain</a>
+                    <a class="only-pc" href="patrick.html">Patrick</a>
+                    <a class="only-pc" href="lucas.html">Lucas</a>
+                    <a class="only-pc" href="teo.html">Téo</a>
+                    <a class="only-pc" href="maeva.html">Maëva</a>
+                    <a class="only-pc" href="malcom.html">Malcom</a>
+                    <a class="only-pc" href="rayane.html">Rayane</a>
+                    <a class="only-pc" href="corentin.html">Corentin</a>
+                    <a class="only-pc" href="https://www.twitch.tv/legrafist" target="_blank">Romain</a>
+                    <a class="only-phone open-menu-phone"><i class="fa-solid fa-bars"></i></a>
+                </div>
+            </div>
+            <div class="only-phone bg-menu-phone" id="menu-phone">
+                <div class="only-phone menu-phone">
+                    <div class="only-phone top-menu-phone">
+                        <a class="only-phone close-menu-phone"><i class="fa-solid fa-xmark"></i></a>
+                    </div>
+                    <a class="only-phone" href="patrick.html"><img src="img/icons/patrick.webp">Patrick</a>
+                    <a class="only-phone" href="lucas.html"><img src="img/icons/lucas.webp">Lucas</a>
+                    <a class="only-phone" href="teo.html"><img src="img/icons/teo.webp">Téo</a>
+                    <a class="only-phone" href="maeva.html"><img src="img/icons/maeva.webp">Maëva</a>
+                    <a class="only-phone" href="malcom.html"><img src="img/icons/malcom.webp">Malcom</a>
+                    <a class="only-phone" href="rayane.html"><img src="img/icons/rayane.webp">Rayane</a>
+                    <a class="only-phone" href="corentin.html"><img src="img/icons/corentin.webp">Corentin</a>
+                    <a class="only-phone" href="https://www.twitch.tv/legrafist" target="_blank"><img src="img/icons/romain.webp">Romain</a>
                 </div>
             </div>
         </header>
 
+        <img class="ahrichibi" src="img/ahrichibi.png">
 
 
         <!-- SECTION PROFIL -->
@@ -39,6 +58,19 @@
                     <span class="nom">Patrick</span>
                     <span class="pseudo">드라마 팬#2521</span>
                 </div>
+
+                <div class="rank-wr">
+                    <div class="winrate">
+                        <span>50% WR</span>
+                        <div class="winrate-games">
+                            <span>( 15V / 15D )</span>
+                        </div>
+                    </div>
+                    <div class="rank">
+                        <img src="img/rank/Gold.webp">
+                        <span>CHALLENGER</span>
+                    </div>
+                </div>
             </div>
             <div class="txtranked">
                 <h1 title="Le nombre de requêtes vers l'API Riot est limité.">5 derniers matchs classé</h1>
@@ -46,6 +78,7 @@
 
             <div class="profile-matchs">
                 <div class="match-recap match-victory">
+                    
                     <div class="match-infos">
                         <p>Date de la game</p>
                         <p>Ranked Solo/Duo</p>
@@ -133,6 +166,282 @@
                             </div>
                         </div>
                     </div>
+                    <div class="btn-table-data-open">
+                        <button class="btn-table-open btn-table-data-open-btn "><i class="fa-solid fa-chevron-down"></i></button>
+                    </div>
+                </div>
+                <div class="moredata" id="moredata1">
+                    <div class="table">
+                        <div class="moredatablueside">
+                            <table>
+                                <colgroup>
+                                    <col width="183">
+                                    <col width="68px">
+                                    <col width="98px">
+                                    <col width="100px">
+                                    <col width="56px">
+                                    <col width="195px">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>Victoire (Equipe bleue)</th>
+                                        <th>Score</th>
+                                        <th>KDA</th>
+                                        <th>Dégâts</th>
+                                        <th>CS</th>
+                                        <th>Objets</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            <div class="table-player">
+                                                <div class="table-player-icon-lvl">
+                                                    <img src="https://opgg-static.akamaized.net/meta/images/lol/15.24.1/champion/Qiyana.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto:good,f_webp,w_160,h_160&v=1524">
+                                                    <span>18</span>
+                                                </div>
+                                                <div class="table-player-sums-runes">
+                                                    <div class="table-player-sums">
+                                                        <img src="img/summonerspells/11.png">
+                                                        <img src="img/summonerspells/1.png">
+                                                    </div>
+                                                    <div class="table-player-runes">
+                                                        <img src="img/runes/8008.png">
+                                                        <img src="img/runes/8100.png">
+                                                    </div>
+                                                </div>
+                                                <div class="table-player-name">
+                                                    <span>Nomdujoueur</span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th>score</th>
+                                        <th>
+                                            <div class="table-player-kda">
+                                                <span>10/10/10 (100%)</span>
+                                                <span>10.10</span>
+                                            </div>
+                                            
+                                        </th>
+                                        <th>
+                                            <div class="table-player-dmg">
+                                                <span>100 000</span>
+                                                <span>23%</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-cs">
+                                                <span>999</span>
+                                                <span>99/m</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-all-items">
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/223065.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/223065.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/223065.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/223065.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/223065.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/3340.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/1200.png" onerror="this.style.display ='none'"></div>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <div class="table-player">
+                                                <div class="table-player-icon-lvl">
+                                                    <img src="https://opgg-static.akamaized.net/meta/images/lol/15.24.1/champion/Qiyana.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto:good,f_webp,w_160,h_160&v=1524">
+                                                    <span>18</span>
+                                                </div>
+                                                <div class="table-player-sums-runes">
+                                                    <div class="table-player-sums">
+                                                        <img src="img/summonerspells/11.png">
+                                                        <img src="img/summonerspells/1.png">
+                                                    </div>
+                                                    <div class="table-player-runes">
+                                                        <img src="img/runes/8008.png">
+                                                        <img src="img/runes/8100.png">
+                                                    </div>
+                                                </div>
+                                                <div class="table-player-name">
+                                                    <span>Nomdujoueur</span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th>score</th>
+                                        <th>
+                                            <div class="table-player-kda">
+                                                <span>10/10/10 (100%)</span>
+                                                <span>10.10</span>
+                                            </div>
+                                            
+                                        </th>
+                                        <th>
+                                            <div class="table-player-dmg">
+                                                <span>100 000</span>
+                                                <span>23%</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-cs">
+                                                <span>999</span>
+                                                <span>99/m</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-all-items">
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/223065.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/223065.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/223065.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/223065.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/223065.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/3340.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/1200.png" onerror="this.style.display ='none'"></div>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>joueur 3</th>
+                                        <th>score</th>
+                                        <th>kda</th>
+                                        <th>dgts</th>
+                                        <th>cs</th>
+                                        <th>items</th>
+                                    </tr>
+                                    <tr>
+                                        <th>joueur 4</th>
+                                        <th>score</th>
+                                        <th>kda</th>
+                                        <th>dgts</th>
+                                        <th>cs</th>
+                                        <th>items</th>
+                                    </tr>
+                                    <tr>
+                                        <th>joueur 5</th>
+                                        <th>score</th>
+                                        <th>kda</th>
+                                        <th>dgts</th>
+                                        <th>cs</th>
+                                        <th>items</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="moredataredside">
+                            <table>
+                                <colgroup>
+                                    <col width="183">
+                                    <col width="68px">
+                                    <col width="98px">
+                                    <col width="100px">
+                                    <col width="56px">
+                                    <col width="195px">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>Victoire (Equipe bleue)</th>
+                                        <th>Score</th>
+                                        <th>KDA</th>
+                                        <th>Dégâts</th>
+                                        <th>CS</th>
+                                        <th>Objets</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            <div class="table-player">
+                                                <div class="table-player-icon-lvl">
+                                                    <img src="https://opgg-static.akamaized.net/meta/images/lol/15.24.1/champion/Qiyana.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto:good,f_webp,w_160,h_160&v=1524">
+                                                    <span>18</span>
+                                                </div>
+                                                <div class="table-player-sums-runes">
+                                                    <div class="table-player-sums">
+                                                        <img src="img/summonerspells/11.png">
+                                                        <img src="img/summonerspells/1.png">
+                                                    </div>
+                                                    <div class="table-player-runes">
+                                                        <img src="img/runes/8008.png">
+                                                        <img src="img/runes/8100.png">
+                                                    </div>
+                                                </div>
+                                                <div class="table-player-name">
+                                                    <span>Nomdujoueur</span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th>score</th>
+                                        <th>
+                                            <div class="table-player-kda">
+                                                <span>10/10/10 (100%)</span>
+                                                <span>10.10</span>
+                                            </div>
+                                            
+                                        </th>
+                                        <th>
+                                            <div class="table-player-dmg">
+                                                <span>100 000</span>
+                                                <span>23%</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-cs">
+                                                <span>999</span>
+                                                <span>99/m</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-all-items">
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/223065.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/223065.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/223065.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/223065.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/223065.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/3340.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/1200.png" onerror="this.style.display ='none'"></div>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>joueur 2</th>
+                                        <th>score</th>
+                                        <th>kda</th>
+                                        <th>dgts</th>
+                                        <th>cs</th>
+                                        <th>items</th>
+                                    </tr>
+                                    <tr>
+                                        <th>joueur 3</th>
+                                        <th>score</th>
+                                        <th>kda</th>
+                                        <th>dgts</th>
+                                        <th>cs</th>
+                                        <th>items</th>
+                                    </tr>
+                                    <tr>
+                                        <th>joueur 4</th>
+                                        <th>score</th>
+                                        <th>kda</th>
+                                        <th>dgts</th>
+                                        <th>cs</th>
+                                        <th>items</th>
+                                    </tr>
+                                    <tr>
+                                        <th>joueur 5</th>
+                                        <th>score</th>
+                                        <th>kda</th>
+                                        <th>dgts</th>
+                                        <th>cs</th>
+                                        <th>items</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="test">
@@ -140,10 +449,10 @@
         </div>
 
 
-
+        <script src="scripts/table_data.js"></script>
         <footer>
             <p>AKUMA.RKD is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc</p>
         </footer>
-        <script src="scripts/loldata.js"></script>
+        
     </body>
 </html>

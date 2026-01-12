@@ -65,7 +65,7 @@ table {
 
 body {
     background-color: #010213;
-    cursor: url('img/arrow-cursor-outline.svg') -5 5, auto;
+    cursor: url('img/arrow-cursor-outline.svg') 5 0, auto;
 }
 
 a {
@@ -95,7 +95,7 @@ a {
     margin-left: 30px;
     font: 500 1.4rem "Satoshi", sans-serif;
     color: #d9dafc;
-    cursor: url('img/hand-pointer.svg') 0 15, auto;
+    cursor: url('img/hand-pointer.svg') 6 10, auto;
 }
 
 
@@ -179,7 +179,7 @@ a {
     margin-top: 30px;
     width: 100%;
     font: 900 3.5rem "Satoshi", sans-serif;
-    cursor: url('img/arrow-cursor-outline.svg') 0 0, auto;
+    cursor: url('img/arrow-cursor-outline.svg') 5 0, auto;
 }
 
 .title-1 h1 {
@@ -249,7 +249,7 @@ a {
   border-radius: 50%;
   background: #d9dafc;
   color: #010213;
-  cursor: url('img/hand-pointer.svg') 0 15, auto;
+  cursor: url('img/hand-pointer.svg') 6 10, auto;
   z-index: 100;
 
 }
@@ -282,7 +282,7 @@ a {
 }
 
 .card:first-child:hover {
-  cursor: url('img/hand-pointer.svg') 0 15, auto;
+  cursor: url('img/hand-pointer.svg') 6 10, auto;
 }
 
 @keyframes cardanim {
@@ -369,6 +369,15 @@ footer {
 -------------------------------------*/
 
 
+.ahrichibi {
+  height: 100px;
+  position: absolute;
+  top: 10%;
+  left: 47%;
+  transform: rotateZ(-15deg);
+  pointer-events: none;
+}
+
 .profile {
   display: flex;
   flex-direction: column;
@@ -383,7 +392,7 @@ footer {
 .profile-header {
   width: 750px;
   display: grid;
-  grid-template-columns: 100px 1fr 120px;
+  grid-template-columns: 100px 1fr 1fr;
   padding-right: 30px;
   grid-column-gap: 30px;
   align-items: center;
@@ -410,21 +419,70 @@ footer {
 
 
 .profile-infos span {
+  text-shadow: 0 0 10px #010213;
   display: block;
   color: #d9dafcb6;
   font : 500 1.2rem "Satoshi", sans-serif;
 }
 
 .profile-infos span:nth-child(2) {
+  
   text-transform: uppercase;
 }
 
 .profile-infos .lvl {
+  text-shadow: none;
   font: 700 0.9rem "Satoshi", sans-serif;
   background: linear-gradient(110deg,rgba(137, 135, 247, 1) 20%, rgba(116, 10, 148, 1) 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.rank-wr {
+  display: flex;
+  justify-content: end;
+  text-shadow: 0 0 10px #010213;
+  
+}
+
+.winrate {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+  font: 500 1rem "Satoshi", sans-serif;
+  line-height: 1.2;
+  color: rgba(137, 135, 247, 1);
+}
+
+
+
+.winrate-games span {
+  color: #d9dafcb6;
+  font-size: 0.8rem;
+}
+
+
+.rank {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100px;
+}
+
+.rank img {
+  width: 80px;
+  pointer-events: none;
+}
+
+.rank span {
+  transform: translateY(-10px);
+  color:#d9dafcb6;
+  font: 500 0.9rem "Satoshi", sans-serif;
+  text-transform: uppercase;
+}
+
 
 .txtranked {
   width: 680px;
@@ -447,6 +505,24 @@ footer {
   align-items: center;
 }
 
+
+.chibirecapwin {
+  position: absolute;
+  width: 80px;
+  top: -35%;
+  left: 93%;
+  pointer-events: none;
+}
+
+.chibirecaplose {
+  position: absolute;
+  width: 90px;
+  top: -39%;
+  left: 92%;
+  pointer-events: none;
+  transform: rotateZ(20deg);
+}
+
 /*  MATCH RECAP  */
 
 .match-recap {
@@ -456,7 +532,7 @@ footer {
   align-items: center;
   background-color: #d9dafc44;
   box-shadow: inset 0 0 40px #010213;
-  border-radius: 20px;
+  border-radius: 20px 20px 20px 20px;
   margin-top: 10px;
   padding: 10px;
   justify-content: left;
@@ -651,7 +727,7 @@ footer {
 .champion-playername a {
   text-decoration: none;
   color:#d9dafcb6;
-  
+  cursor: url('img/hand-pointer.svg') 6 10, auto;
 }
 
 .champion-playername span {
@@ -671,6 +747,307 @@ footer {
   font: 800 0.7rem "Satoshi", sans-serif;
   color: #d9dafcd0;
 }
+
+
+.btn-table-data-open {
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+  height: 80px;
+}
+
+.btn-table-data-open button {
+  height: 20px;
+  width: 20px;
+  border: none;
+  border-radius: 40%;
+  border: solid 1px #d9dafc;
+  background-color: #0102135e;
+  color: #d9dafc;
+  cursor: url('img/hand-pointer.svg') 6 10, auto;
+}
+
+.btn-table-data-open button i {
+  transform: translateY(1px);
+}
+
+
+/*
+      MATCH MORE DATA LIST
+*/
+
+
+.moredata {
+  background-color: #010213;
+  width: 700px;
+  height: 460px;
+  border-radius: 10px;
+  margin-top: 5px;
+  display: none;
+}
+
+/* setting de la table*/
+.table {
+  border-radius: 10px;
+  border: solid 1px rgba(137, 135, 247, 1);
+  height: 460px;
+  width: 700px;
+}
+
+.moredatablueside {
+  height: 50%;
+  width: 100%;
+  border-radius: 10px 10px 0 0 ;
+  background-color: rgba(137, 135, 247, 0.3);
+}
+
+.moredataredside {
+  height: 50%;
+  width: 100%;
+  border-radius: 0 0 10px 10px;
+  background-color: rgba(247, 92, 92, 0.3);
+}
+
+.moredatablueside thead tr,
+.moredataredside thead tr
+{
+  height: 25px;
+  background-color: #01021380;
+  
+}
+
+.moredatablueside thead tr th,
+.moredataredside thead tr th
+{
+  color: #d9dafcb6;
+  font: 500 0.7rem "Satoshi", sans-serif;
+}
+
+.moredatablueside thead tr th span,
+.moredataredside thead tr th span
+{
+  color: #d9dafcb6;
+  font: 700 0.7rem "Satoshi", sans-serif;
+}
+
+.moredatablueside tbody tr,
+.moredataredside tbody tr
+{
+  height: 40px;
+  background-color: #01021315;
+  border-bottom: solid 1px #01021334;
+}
+
+.moredatablueside tbody tr:last-child,
+.moredataredside tbody tr:last-child
+{
+  border-bottom: none;
+}
+
+
+.moredatablueside tbody tr th,
+.moredataredside tbody tr th
+{
+  color: #d9dafcb6;
+  font: 500 0.7rem "Satoshi", sans-serif;
+}
+
+.moredatablueside th,
+.moredataredside th
+{
+  color:#d9dafcb6;
+  align-content: center;
+}
+
+
+
+
+/* style de la data de la table */
+
+/* infos du joueur : champ, sums, runes, nom */
+
+
+.table-player {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 40px;
+}
+
+.table-player-icon-lvl {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 40px;
+  margin-left: 10px;
+}
+
+.table-player-icon-lvl img {
+  height: 35px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.table-player-icon-lvl span {
+  height: 15px;
+  width: 15px;
+  background-color: #000313c2;
+  color: #d9dafc; 
+  border-radius: 50%;
+  font: 500 0.7rem "Satoshi", sans-serif;
+  transform: translate(-10px, 10px);
+}
+
+.table-player-sums-runes {
+  position: relative;
+  display: flex;
+  height: 40px;
+}
+
+.table-player-sums {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 20px;
+}
+.table-player-sums img {
+  border-radius: 3px;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  height: 18px;
+  width: 18px;
+  pointer-events: none;
+}
+
+.table-player-runes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 25px;
+}
+.table-player-runes img {
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.table-player-runes img:first-child {
+  background-color: #000313c2;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+}
+
+.table-player-runes img:last-child {
+  height: 15px;
+  width: 15px;
+}
+
+.table-player-name {
+  max-width: 80px;
+  margin-left: 10px;
+  font: 800 0.7rem "Satoshi", sans-serif;
+  color: #d9dafc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+}
+
+.table-player-name span a {
+  text-decoration: none;
+  font: 800 0.7rem "Satoshi", sans-serif;
+  color: #d9dafc;
+  cursor: url('img/hand-pointer.svg') 6 10, auto;
+}
+
+/*  kda du joueur  */
+
+
+.table-player-kda {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
+
+.table-player-kda span:first-child {
+  font: 500 0.7rem "Satoshi", sans-serif;
+}
+
+.table-player-kda span:last-child {
+  font: 800 0.7rem "Satoshi", sans-serif;
+}
+
+/*  dégâts du joueur  */
+
+
+.table-player-dmg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
+
+.table-player-dmg span:first-child {
+  font: 500 0.7rem "Satoshi", sans-serif;
+}
+
+.table-player-dmg span:last-child {
+  font: 800 0.7rem "Satoshi", sans-serif;
+}
+
+/*  farm du joueur  */
+
+.table-player-cs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
+
+/*  items du joueur  */
+
+.table-player-all-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 40px;
+  margin-right: 6px;
+}
+
+.table-player-item {
+  border-radius: 5px;
+  height: 20px;
+  width: 20px;
+  background-color: #d9dafc28;
+}
+
+.table-player-item img {
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+}
+
+.table-player-item:nth-child(7) img,
+.table-player-item:nth-child(8) img,
+.table-player-item:nth-child(7),
+.table-player-item:nth-child(8)
+{
+  border-radius: 50%;
+}
+
+
+
+
 
 
 
@@ -753,7 +1130,6 @@ footer {
     border-radius: 0 0 0 15px;
     border-left: solid 1px rgba(137, 135, 247, 1);
     border-bottom: solid 1px rgba(137, 135, 247, 1);
-    box-shadow: 0 0 20px rgba(116, 10, 148, 0.3);
     animation: menu-phone-anim 0.2s ease-out;
   }
 
@@ -922,7 +1298,6 @@ footer {
     border-radius: 0 0 0 15px;
     border-left: solid 1px rgba(137, 135, 247, 1);
     border-bottom: solid 1px rgba(137, 135, 247, 1);
-    box-shadow: 0 0 20px rgba(116, 10, 148, 0.3);
     animation: menu-phone-anim 0.2s ease-out;
   }
 
@@ -1068,6 +1443,29 @@ footer {
   }
 
 
+  /*
+      MATCH MORE DATA LIST
+*/
+
+
+.moredata {
+  background-color: #010213;
+  width: 600px;
+  height: 460px;
+  border-radius: 10px;
+  margin-top: 5px;
+  display: none;
+}
+
+/* setting de la table*/
+.table {
+  border-radius: 10px;
+  border: solid 1px rgba(137, 135, 247, 1);
+  height: 460px;
+  width: 600px;
+}
+
+
 
   .only-phone {
     display: none;
@@ -1139,7 +1537,6 @@ footer {
     border-radius: 0 0 0 15px;
     border-left: solid 1px rgba(137, 135, 247, 1);
     border-bottom: solid 1px rgba(137, 135, 247, 1);
-    box-shadow: 0 0 20px rgba(116, 10, 148, 0.3);
     animation: menu-phone-anim 0.2s ease-out;
   }
 
@@ -1242,15 +1639,50 @@ footer {
 
   .profile-header {
     width: 440px;
+    
   }
 
 
   .profile-infos {
-    width: 200px;
+    width: 150px;
+    
   }
   .profile-infos span {
+    width: 150px;
 
-    width: 200px;
+  }
+
+
+  .rank-wr {
+    display: flex;
+    justify-content: end;
+    text-shadow: 0 0 10px #010213;
+    transform: translateX(-50px);
+  }
+
+  .winrate {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0;
+    font: 500 0.8rem "Satoshi", sans-serif;
+    line-height: 1.2;
+    color: rgba(137, 135, 247, 1);
+    width: 90px;
+  }
+
+  .winrate-games span {
+    color: #d9dafcb6;
+    font-size: 0.6rem;
+  }
+
+
+  .rank span {
+    transform: translateY(-10px);
+    color:#d9dafcb6;
+    font: 500 0.6rem "Satoshi", sans-serif;
+    text-transform: uppercase;
   }
 
 
@@ -1361,7 +1793,27 @@ footer {
     font: 500 0.5rem "Satoshi";
   }
 
+
+  .moredata {
+    background-color: #010213;
+    width: 400px;
+    height: 460px;
+    border-radius: 10px;
+    margin-top: 5px;
+    display: none;
+    overflow: scroll;
+  }
+
+  /* setting de la table*/
+  .table {
+    border-radius: 10px;
+    border: solid 1px rgba(137, 135, 247, 1);
+    height: 460px;
+    width: 700px;
+  }
+
 }
+
 
 @media screen and (width <= 480px) {
   
@@ -1424,7 +1876,6 @@ footer {
     border-radius: 0 0 0 15px;
     border-left: solid 1px rgba(137, 135, 247, 1);
     border-bottom: solid 1px rgba(137, 135, 247, 1);
-    box-shadow: 0 0 20px rgba(116, 10, 148, 0.3);
     animation: menu-phone-anim 0.2s ease-out;
   }
 
@@ -1545,15 +1996,59 @@ footer {
   }
 
   .profile-infos {
-    width: 200px;
+    width: 120px;
   }
+
+  .profile-infos .lvl {
+    width: 120px;
+  }
+
   .profile-infos span {
     display: block;
     color: #d9dafcb6;
     font : 500 0.8rem "Satoshi", sans-serif;
     transform: translateY(-10px);
-    width: 200px;
+    width: 120px;
   }
+
+
+  .rank-wr {
+    display: flex;
+    justify-content: end;
+    text-shadow: 0 0 10px #010213;
+    transform: translate(210px, -110px);
+    width: 130px;
+  }
+
+  .winrate {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0;
+    font: 500 0.7rem "Satoshi", sans-serif;
+    line-height: 1.2;
+    color: rgba(137, 135, 247, 1);
+    width: 90px;
+  }
+
+  .winrate-games span {
+    color: #d9dafcb6;
+    font-size: 0.6rem;
+    width: 100px;
+  }
+
+  .rank img {
+    width: 80px;
+  }
+
+  .rank span {
+    transform: translateY(-10px);
+    color:#d9dafcb6;
+    font: 500 0.5rem "Satoshi", sans-serif;
+    text-transform: uppercase;
+  }
+
 
   .txtranked {
     width: 250px;
@@ -1660,7 +2155,23 @@ footer {
     font: 500 0.5rem "Satoshi";
   }
 
+  .moredata {
+    background-color: #010213;
+    width: 300px;
+    height: 460px;
+    border-radius: 10px;
+    margin-top: 5px;
+    display: none;
+    overflow: scroll;
+  }
 
+  /* setting de la table*/
+  .table {
+    border-radius: 10px;
+    border: solid 1px rgba(137, 135, 247, 1);
+    height: 460px;
+    width: 700px;
+  }
 
 }
 
@@ -1689,6 +2200,24 @@ footer {
 
   .menu-phone a {
     font: 600 0.8rem "Satoshi", sans-serif;
+  }
+
+  .moredata {
+    background-color: #010213;
+    width: 400px;
+    height: 460px;
+    border-radius: 10px;
+    margin-top: 5px;
+    display: none;
+    overflow: scroll;
+  }
+
+  /* setting de la table*/
+  .table {
+    border-radius: 10px;
+    border: solid 1px rgba(137, 135, 247, 1);
+    height: 460px;
+    width: 700px;
   }
 
 }
