@@ -56,7 +56,7 @@ async function getSumsJSON() {
 async function getMatches(puuid, player) {
 
     try {
-        const response = await fetch(linkMatches + puuid + '/ids?type=ranked&start=0&count=5&api_key=' + APIKEY);
+        const response = await fetch(linkMatches + puuid + '/ids?queue=420&start=0&count=5&api_key=' + APIKEY);
         const data = await response.json();
 
 

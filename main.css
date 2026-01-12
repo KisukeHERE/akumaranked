@@ -1455,7 +1455,8 @@ footer {
   }
 
   .champion-kpcs {
-    font: 400 0.7rem "Satoshi";
+    font: 500 0.6rem "Satoshi";
+    
   }
 
 
@@ -1788,12 +1789,11 @@ footer {
 
 
   .champion-kpcs {
-    font: 500 0.7rem "Satoshi";
-    width: 100px;
+    font: 500 0.6rem "Satoshi";
+    width: 90px;
     padding: 0;
     margin: 0;
     margin-right: 15px;
-
   }
 
   .game-players {
@@ -2187,6 +2187,10 @@ footer {
     border: solid 1px rgba(137, 135, 247, 1);
     height: 460px;
     width: 700px;
+  }
+
+  .btn-table-data-open {
+    transform: translate(-10px, -5px);
   }
 
 }
