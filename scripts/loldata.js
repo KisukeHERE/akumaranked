@@ -1000,6 +1000,7 @@ function pushDataOnPage(playerlist, playername) {
     document.querySelector('.profile-header').innerHTML = profile;
     document.querySelector('.txtranked').innerHTML = match5;
     document.querySelector('.profile-matchs').innerHTML = html;
+    document.querySelector('.loading-data').innerHTML = "";
 }
 
 
