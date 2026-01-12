@@ -33,7 +33,7 @@ let matchesData = [];
 
 let sumsJson = [];
 
-const APIKEY = 'RGAPI-4624d071-e282-4b00-b90b-58d18fcfffd0';
+const APIKEY = 'RGAPI-6f87d86a-ab71-4790-95bb-083500aa7a8f';
 const linkMatches = 'https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/';
 const linkRank = 'https://euw1.api.riotgames.com/lol/league/v4/entries/by-puuid/';
 const linkMatchData = 'https://europe.api.riotgames.com/lol/match/v5/matches/';
@@ -195,7 +195,7 @@ function pushDataOnPage(playerlist, playername) {
     let html = '';
     let profile = '';
     let titlepage = '';
-    
+    let btndatanumber = 0;
 
     playerlist.forEach((match) => {
         match.info.participants.forEach((playernum) => {   
@@ -213,6 +213,7 @@ function pushDataOnPage(playerlist, playername) {
                 const runePrincipale = playernum.perks.styles[0].selections[0].perk;
                 const runeSecondaire = playernum.perks.styles[1].style;
                 let borderresult = '';
+                btndatanumber++;
 
                 if (playernum.win === true) {
                     result = 'Victoire';
@@ -317,9 +318,629 @@ function pushDataOnPage(playerlist, playername) {
                                 </div>
                             </div>
                         </div>
+                        <div class="btn-table-data-open">
+                            <button class="btn-table-open-${btndatanumber} btn-table-data-open-btn "><i class="fa-solid fa-chevron-down"></i></button>
+                        </div>
                     </div>
 
                 `;
+
+
+                let blueresult = "";
+                let redresult = "";
+                
+                match.info.teams[0].win === true ? blueresult = 'Victoire' : blueresult = 'Défaite';
+                match.info.teams[1].win === true ? redresult = 'Victoire' : redresult = 'Défaite';
+
+
+                html += `
+                <div class="moredata" id="moredata${btndatanumber}">
+                    <div class="table">
+                        <div class="moredatablueside">
+                            <table>
+                                <colgroup>
+                                    <col width="183">
+                                    <col width="68px">
+                                    <col width="98px">
+                                    <col width="100px">
+                                    <col width="56px">
+                                    <col width="195px">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th><span>${blueresult}</span> (Équipe bleue)</th>
+                                        <th>Score</th>
+                                        <th>KDA</th>
+                                        <th>Dégâts</th>
+                                        <th>CS</th>
+                                        <th>Objets</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            <div class="table-player">
+                                                <div class="table-player-icon-lvl">
+                                                    <img src="https://opgg-static.akamaized.net/meta/images/lol/15.24.1/champion/${match.info.participants[0].championName}.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto:good,f_webp,w_160,h_160&v=1524">
+                                                    <span>${match.info.participants[0].champLevel}</span>
+                                                </div>
+                                                <div class="table-player-sums-runes">
+                                                    <div class="table-player-sums">
+                                                        <img src="img/summonerspells/${match.info.participants[0].summoner1Id}.png">
+                                                        <img src="img/summonerspells/${match.info.participants[0].summoner2Id}.png">
+                                                    </div>
+                                                    <div class="table-player-runes">
+                                                        <img src="img/runes/${match.info.participants[0].perks.styles[0].selections[0].perk}.png">
+                                                        <img src="img/runes/${match.info.participants[0].perks.styles[1].style}.png">
+                                                    </div>
+                                                </div>
+                                                <div class="table-player-name">
+                                                    <span><a target="_blank" href="${opgg}${match.info.participants[0].riotIdGameName}-${match.info.participants[0].riotIdTagline}">${match.info.participants[0].riotIdGameName}<a/></span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th>score</th>
+                                        <th>
+                                            <div class="table-player-kda">
+                                                <span>${match.info.participants[0].kills}/${match.info.participants[0].deaths}/${match.info.participants[0].assists} (${(match.info.participants[0].challenges.killParticipation * 100).toFixed()}%)</span>
+                                                <span>${(match.info.participants[0].challenges.kda).toFixed(2)}</span>
+                                            </div>
+                                            
+                                        </th>
+                                        <th>
+                                            <div class="table-player-dmg">
+                                                <span>${(match.info.participants[0].totalDamageDealtToChampions).toLocaleString()}</span>
+                                                <span>${(match.info.participants[0].challenges.teamDamagePercentage * 100).toFixed()}%</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-cs">
+                                                <span>${(match.info.participants[0].totalMinionsKilled + match.info.participants[0].neutralMinionsKilled)}</span>
+                                                <span>${((match.info.participants[0].totalMinionsKilled + match.info.participants[0].neutralMinionsKilled) / minutes).toFixed(1)}/m</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-all-items">
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[0].item0}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[0].item1}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[0].item2}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[0].item3}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[0].item4}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[0].item5}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[0].item6}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[0].roleBoundItem}.png" onerror="this.style.display ='none'"></div>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <div class="table-player">
+                                                <div class="table-player-icon-lvl">
+                                                    <img src="https://opgg-static.akamaized.net/meta/images/lol/15.24.1/champion/${match.info.participants[1].championName}.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto:good,f_webp,w_160,h_160&v=1524">
+                                                    <span>${match.info.participants[1].champLevel}</span>
+                                                </div>
+                                                <div class="table-player-sums-runes">
+                                                    <div class="table-player-sums">
+                                                        <img src="img/summonerspells/${match.info.participants[1].summoner1Id}.png">
+                                                        <img src="img/summonerspells/${match.info.participants[1].summoner2Id}.png">
+                                                    </div>
+                                                    <div class="table-player-runes">
+                                                        <img src="img/runes/${match.info.participants[1].perks.styles[0].selections[0].perk}.png">
+                                                        <img src="img/runes/${match.info.participants[1].perks.styles[1].style}.png">
+                                                    </div>
+                                                </div>
+                                                <div class="table-player-name">
+                                                    <span><a target="_blank" href="${opgg}${match.info.participants[1].riotIdGameName}-${match.info.participants[1].riotIdTagline}">${match.info.participants[1].riotIdGameName}<a/></span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th>score</th>
+                                        <th>
+                                            <div class="table-player-kda">
+                                                <span>${match.info.participants[1].kills}/${match.info.participants[1].deaths}/${match.info.participants[1].assists} (${(match.info.participants[1].challenges.killParticipation * 100).toFixed()}%)</span>
+                                                <span>${(match.info.participants[1].challenges.kda).toFixed(2)}</span>
+                                            </div>
+                                            
+                                        </th>
+                                        <th>
+                                            <div class="table-player-dmg">
+                                                <span>${(match.info.participants[1].totalDamageDealtToChampions).toLocaleString()}</span>
+                                                <span>${(match.info.participants[1].challenges.teamDamagePercentage * 100).toFixed()}%</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-cs">
+                                                <span>${(match.info.participants[1].totalMinionsKilled + match.info.participants[1].neutralMinionsKilled)}</span>
+                                                <span>${((match.info.participants[1].totalMinionsKilled + match.info.participants[1].neutralMinionsKilled) / minutes).toFixed(1)}/m</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-all-items">
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[1].item0}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[1].item1}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[1].item2}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[1].item3}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[1].item4}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[1].item5}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[1].item6}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[1].roleBoundItem}.png" onerror="this.style.display ='none'"></div>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <div class="table-player">
+                                                <div class="table-player-icon-lvl">
+                                                    <img src="https://opgg-static.akamaized.net/meta/images/lol/15.24.1/champion/${match.info.participants[2].championName}.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto:good,f_webp,w_160,h_160&v=1524">
+                                                    <span>${match.info.participants[2].champLevel}</span>
+                                                </div>
+                                                <div class="table-player-sums-runes">
+                                                    <div class="table-player-sums">
+                                                        <img src="img/summonerspells/${match.info.participants[2].summoner1Id}.png">
+                                                        <img src="img/summonerspells/${match.info.participants[2].summoner2Id}.png">
+                                                    </div>
+                                                    <div class="table-player-runes">
+                                                        <img src="img/runes/${match.info.participants[2].perks.styles[0].selections[0].perk}.png">
+                                                        <img src="img/runes/${match.info.participants[2].perks.styles[1].style}.png">
+                                                    </div>
+                                                </div>
+                                                <div class="table-player-name">
+                                                    <span><a target="_blank" href="${opgg}${match.info.participants[2].riotIdGameName}-${match.info.participants[2].riotIdTagline}">${match.info.participants[2].riotIdGameName}<a/></span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th>score</th>
+                                        <th>
+                                            <div class="table-player-kda">
+                                                <span>${match.info.participants[2].kills}/${match.info.participants[2].deaths}/${match.info.participants[2].assists} (${(match.info.participants[2].challenges.killParticipation * 100).toFixed()}%)</span>
+                                                <span>${(match.info.participants[2].challenges.kda).toFixed(2)}</span>
+                                            </div>
+                                            
+                                        </th>
+                                        <th>
+                                            <div class="table-player-dmg">
+                                                <span>${(match.info.participants[2].totalDamageDealtToChampions).toLocaleString()}</span>
+                                                <span>${(match.info.participants[2].challenges.teamDamagePercentage * 100).toFixed()}%</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-cs">
+                                                <span>${(match.info.participants[2].totalMinionsKilled + match.info.participants[2].neutralMinionsKilled)}</span>
+                                                <span>${((match.info.participants[2].totalMinionsKilled + match.info.participants[2].neutralMinionsKilled) / minutes).toFixed(1)}/m</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-all-items">
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[2].item0}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[2].item1}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[2].item2}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[2].item3}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[2].item4}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[2].item5}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[2].item6}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[2].roleBoundItem}.png" onerror="this.style.display ='none'"></div>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <div class="table-player">
+                                                <div class="table-player-icon-lvl">
+                                                    <img src="https://opgg-static.akamaized.net/meta/images/lol/15.24.1/champion/${match.info.participants[3].championName}.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto:good,f_webp,w_160,h_160&v=1524">
+                                                    <span>${match.info.participants[3].champLevel}</span>
+                                                </div>
+                                                <div class="table-player-sums-runes">
+                                                    <div class="table-player-sums">
+                                                        <img src="img/summonerspells/${match.info.participants[3].summoner1Id}.png">
+                                                        <img src="img/summonerspells/${match.info.participants[3].summoner2Id}.png">
+                                                    </div>
+                                                    <div class="table-player-runes">
+                                                        <img src="img/runes/${match.info.participants[3].perks.styles[0].selections[0].perk}.png">
+                                                        <img src="img/runes/${match.info.participants[3].perks.styles[1].style}.png">
+                                                    </div>
+                                                </div>
+                                                <div class="table-player-name">
+                                                    <span><a target="_blank" href="${opgg}${match.info.participants[3].riotIdGameName}-${match.info.participants[3].riotIdTagline}">${match.info.participants[3].riotIdGameName}<a/></span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th>score</th>
+                                        <th>
+                                            <div class="table-player-kda">
+                                                <span>${match.info.participants[3].kills}/${match.info.participants[3].deaths}/${match.info.participants[3].assists} (${(match.info.participants[3].challenges.killParticipation * 100).toFixed()}%)</span>
+                                                <span>${(match.info.participants[3].challenges.kda).toFixed(2)}</span>
+                                            </div>
+                                            
+                                        </th>
+                                        <th>
+                                            <div class="table-player-dmg">
+                                                <span>${(match.info.participants[3].totalDamageDealtToChampions).toLocaleString()}</span>
+                                                <span>${(match.info.participants[3].challenges.teamDamagePercentage * 100).toFixed()}%</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-cs">
+                                                <span>${(match.info.participants[3].totalMinionsKilled + match.info.participants[3].neutralMinionsKilled)}</span>
+                                                <span>${((match.info.participants[3].totalMinionsKilled + match.info.participants[3].neutralMinionsKilled) / minutes).toFixed(1)}/m</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-all-items">
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[3].item0}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[3].item1}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[3].item2}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[3].item3}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[3].item4}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[3].item5}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[3].item6}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[3].roleBoundItem}.png" onerror="this.style.display ='none'"></div>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <div class="table-player">
+                                                <div class="table-player-icon-lvl">
+                                                    <img src="https://opgg-static.akamaized.net/meta/images/lol/15.24.1/champion/${match.info.participants[4].championName}.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto:good,f_webp,w_160,h_160&v=1524">
+                                                    <span>${match.info.participants[4].champLevel}</span>
+                                                </div>
+                                                <div class="table-player-sums-runes">
+                                                    <div class="table-player-sums">
+                                                        <img src="img/summonerspells/${match.info.participants[4].summoner1Id}.png">
+                                                        <img src="img/summonerspells/${match.info.participants[4].summoner2Id}.png">
+                                                    </div>
+                                                    <div class="table-player-runes">
+                                                        <img src="img/runes/${match.info.participants[4].perks.styles[0].selections[0].perk}.png">
+                                                        <img src="img/runes/${match.info.participants[4].perks.styles[1].style}.png">
+                                                    </div>
+                                                </div>
+                                                <div class="table-player-name">
+                                                    <span><a target="_blank" href="${opgg}${match.info.participants[4].riotIdGameName}-${match.info.participants[4].riotIdTagline}">${match.info.participants[4].riotIdGameName}<a/></span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th>score</th>
+                                        <th>
+                                            <div class="table-player-kda">
+                                                <span>${match.info.participants[4].kills}/${match.info.participants[4].deaths}/${match.info.participants[4].assists} (${(match.info.participants[4].challenges.killParticipation * 100).toFixed()}%)</span>
+                                                <span>${(match.info.participants[4].challenges.kda).toFixed(2)}</span>
+                                            </div>
+                                            
+                                        </th>
+                                        <th>
+                                            <div class="table-player-dmg">
+                                                <span>${(match.info.participants[4].totalDamageDealtToChampions).toLocaleString()}</span>
+                                                <span>${(match.info.participants[4].challenges.teamDamagePercentage * 100).toFixed()}%</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-cs">
+                                                <span>${(match.info.participants[4].totalMinionsKilled + match.info.participants[4].neutralMinionsKilled)}</span>
+                                                <span>${((match.info.participants[4].totalMinionsKilled + match.info.participants[4].neutralMinionsKilled) / minutes).toFixed(1)}/m</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-all-items">
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[4].item0}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[4].item1}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[4].item2}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[4].item3}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[4].item4}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[4].item5}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[4].item6}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[4].roleBoundItem}.png" onerror="this.style.display ='none'"></div>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="moredataredside">
+                            <table>
+                                <colgroup>
+                                    <col width="183">
+                                    <col width="68px">
+                                    <col width="98px">
+                                    <col width="100px">
+                                    <col width="56px">
+                                    <col width="195px">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th><span>${redresult}</span> (Équipe rouge)</th>
+                                        <th>Score</th>
+                                        <th>KDA</th>
+                                        <th>Dégâts</th>
+                                        <th>CS</th>
+                                        <th>Objets</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            <div class="table-player">
+                                                <div class="table-player-icon-lvl">
+                                                    <img src="https://opgg-static.akamaized.net/meta/images/lol/15.24.1/champion/${match.info.participants[5].championName}.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto:good,f_webp,w_160,h_160&v=1524">
+                                                    <span>${match.info.participants[5].champLevel}</span>
+                                                </div>
+                                                <div class="table-player-sums-runes">
+                                                    <div class="table-player-sums">
+                                                        <img src="img/summonerspells/${match.info.participants[5].summoner1Id}.png">
+                                                        <img src="img/summonerspells/${match.info.participants[5].summoner2Id}.png">
+                                                    </div>
+                                                    <div class="table-player-runes">
+                                                        <img src="img/runes/${match.info.participants[5].perks.styles[0].selections[0].perk}.png">
+                                                        <img src="img/runes/${match.info.participants[5].perks.styles[1].style}.png">
+                                                    </div>
+                                                </div>
+                                                <div class="table-player-name">
+                                                    <span><a target="_blank" href="${opgg}${match.info.participants[5].riotIdGameName}-${match.info.participants[5].riotIdTagline}">${match.info.participants[5].riotIdGameName}<a/></span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th>score</th>
+                                        <th>
+                                            <div class="table-player-kda">
+                                                <span>${match.info.participants[5].kills}/${match.info.participants[5].deaths}/${match.info.participants[5].assists} (${(match.info.participants[5].challenges.killParticipation * 100).toFixed()}%)</span>
+                                                <span>${(match.info.participants[5].challenges.kda).toFixed(2)}</span>
+                                            </div>
+                                            
+                                        </th>
+                                        <th>
+                                            <div class="table-player-dmg">
+                                                <span>${(match.info.participants[5].totalDamageDealtToChampions).toLocaleString()}</span>
+                                                <span>${(match.info.participants[5].challenges.teamDamagePercentage * 100).toFixed()}%</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-cs">
+                                                <span>${(match.info.participants[5].totalMinionsKilled + match.info.participants[5].neutralMinionsKilled)}</span>
+                                                <span>${((match.info.participants[5].totalMinionsKilled + match.info.participants[5].neutralMinionsKilled) / minutes).toFixed(1)}/m</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-all-items">
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[5].item0}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[5].item1}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[5].item2}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[5].item3}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[5].item4}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[5].item5}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[5].item6}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[5].roleBoundItem}.png" onerror="this.style.display ='none'"></div>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <div class="table-player">
+                                                <div class="table-player-icon-lvl">
+                                                    <img src="https://opgg-static.akamaized.net/meta/images/lol/15.24.1/champion/${match.info.participants[6].championName}.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto:good,f_webp,w_160,h_160&v=1524">
+                                                    <span>${match.info.participants[6].champLevel}</span>
+                                                </div>
+                                                <div class="table-player-sums-runes">
+                                                    <div class="table-player-sums">
+                                                        <img src="img/summonerspells/${match.info.participants[6].summoner1Id}.png">
+                                                        <img src="img/summonerspells/${match.info.participants[6].summoner2Id}.png">
+                                                    </div>
+                                                    <div class="table-player-runes">
+                                                        <img src="img/runes/${match.info.participants[6].perks.styles[0].selections[0].perk}.png">
+                                                        <img src="img/runes/${match.info.participants[6].perks.styles[1].style}.png">
+                                                    </div>
+                                                </div>
+                                                <div class="table-player-name">
+                                                    <span><a target="_blank" href="${opgg}${match.info.participants[6].riotIdGameName}-${match.info.participants[6].riotIdTagline}">${match.info.participants[6].riotIdGameName}<a/></span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th>score</th>
+                                        <th>
+                                            <div class="table-player-kda">
+                                                <span>${match.info.participants[6].kills}/${match.info.participants[6].deaths}/${match.info.participants[6].assists} (${(match.info.participants[6].challenges.killParticipation * 100).toFixed()}%)</span>
+                                                <span>${(match.info.participants[6].challenges.kda).toFixed(2)}</span>
+                                            </div>
+                                            
+                                        </th>
+                                        <th>
+                                            <div class="table-player-dmg">
+                                                <span>${(match.info.participants[6].totalDamageDealtToChampions).toLocaleString()}</span>
+                                                <span>${(match.info.participants[6].challenges.teamDamagePercentage * 100).toFixed()}%</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-cs">
+                                                <span>${(match.info.participants[6].totalMinionsKilled + match.info.participants[6].neutralMinionsKilled)}</span>
+                                                <span>${((match.info.participants[6].totalMinionsKilled + match.info.participants[6].neutralMinionsKilled) / minutes).toFixed(1)}/m</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-all-items">
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[6].item0}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[6].item1}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[6].item2}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[6].item3}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[6].item4}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[6].item5}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[6].item6}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[6].roleBoundItem}.png" onerror="this.style.display ='none'"></div>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <div class="table-player">
+                                                <div class="table-player-icon-lvl">
+                                                    <img src="https://opgg-static.akamaized.net/meta/images/lol/15.24.1/champion/${match.info.participants[7].championName}.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto:good,f_webp,w_160,h_160&v=1524">
+                                                    <span>${match.info.participants[7].champLevel}</span>
+                                                </div>
+                                                <div class="table-player-sums-runes">
+                                                    <div class="table-player-sums">
+                                                        <img src="img/summonerspells/${match.info.participants[7].summoner1Id}.png">
+                                                        <img src="img/summonerspells/${match.info.participants[7].summoner2Id}.png">
+                                                    </div>
+                                                    <div class="table-player-runes">
+                                                        <img src="img/runes/${match.info.participants[7].perks.styles[0].selections[0].perk}.png">
+                                                        <img src="img/runes/${match.info.participants[7].perks.styles[1].style}.png">
+                                                    </div>
+                                                </div>
+                                                <div class="table-player-name">
+                                                    <span><a target="_blank" href="${opgg}${match.info.participants[7].riotIdGameName}-${match.info.participants[7].riotIdTagline}">${match.info.participants[7].riotIdGameName}<a/></span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th>score</th>
+                                        <th>
+                                            <div class="table-player-kda">
+                                                <span>${match.info.participants[7].kills}/${match.info.participants[7].deaths}/${match.info.participants[7].assists} (${(match.info.participants[7].challenges.killParticipation * 100).toFixed()}%)</span>
+                                                <span>${(match.info.participants[7].challenges.kda).toFixed(2)}</span>
+                                            </div>
+                                            
+                                        </th>
+                                        <th>
+                                            <div class="table-player-dmg">
+                                                <span>${(match.info.participants[7].totalDamageDealtToChampions).toLocaleString()}</span>
+                                                <span>${(match.info.participants[7].challenges.teamDamagePercentage * 100).toFixed()}%</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-cs">
+                                                <span>${(match.info.participants[7].totalMinionsKilled + match.info.participants[7].neutralMinionsKilled)}</span>
+                                                <span>${((match.info.participants[7].totalMinionsKilled + match.info.participants[7].neutralMinionsKilled) / minutes).toFixed(1)}/m</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-all-items">
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[7].item0}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[7].item1}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[7].item2}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[7].item3}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[7].item4}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[7].item5}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[7].item6}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[7].roleBoundItem}.png" onerror="this.style.display ='none'"></div>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <div class="table-player">
+                                                <div class="table-player-icon-lvl">
+                                                    <img src="https://opgg-static.akamaized.net/meta/images/lol/15.24.1/champion/${match.info.participants[8].championName}.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto:good,f_webp,w_160,h_160&v=1524">
+                                                    <span>${match.info.participants[8].champLevel}</span>
+                                                </div>
+                                                <div class="table-player-sums-runes">
+                                                    <div class="table-player-sums">
+                                                        <img src="img/summonerspells/${match.info.participants[8].summoner1Id}.png">
+                                                        <img src="img/summonerspells/${match.info.participants[8].summoner2Id}.png">
+                                                    </div>
+                                                    <div class="table-player-runes">
+                                                        <img src="img/runes/${match.info.participants[8].perks.styles[0].selections[0].perk}.png">
+                                                        <img src="img/runes/${match.info.participants[8].perks.styles[1].style}.png">
+                                                    </div>
+                                                </div>
+                                                <div class="table-player-name">
+                                                    <span><a target="_blank" href="${opgg}${match.info.participants[8].riotIdGameName}-${match.info.participants[8].riotIdTagline}">${match.info.participants[8].riotIdGameName}<a/></span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th>score</th>
+                                        <th>
+                                            <div class="table-player-kda">
+                                                <span>${match.info.participants[8].kills}/${match.info.participants[8].deaths}/${match.info.participants[8].assists} (${(match.info.participants[8].challenges.killParticipation * 100).toFixed()}%)</span>
+                                                <span>${(match.info.participants[8].challenges.kda).toFixed(2)}</span>
+                                            </div>
+                                            
+                                        </th>
+                                        <th>
+                                            <div class="table-player-dmg">
+                                                <span>${(match.info.participants[8].totalDamageDealtToChampions).toLocaleString()}</span>
+                                                <span>${(match.info.participants[8].challenges.teamDamagePercentage * 100).toFixed()}%</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-cs">
+                                                <span>${(match.info.participants[8].totalMinionsKilled + match.info.participants[8].neutralMinionsKilled)}</span>
+                                                <span>${((match.info.participants[8].totalMinionsKilled + match.info.participants[8].neutralMinionsKilled) / minutes).toFixed(1)}/m</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-all-items">
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[8].item0}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[8].item1}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[8].item2}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[8].item3}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[8].item4}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[8].item5}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[8].item6}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[8].roleBoundItem}.png" onerror="this.style.display ='none'"></div>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <div class="table-player">
+                                                <div class="table-player-icon-lvl">
+                                                    <img src="https://opgg-static.akamaized.net/meta/images/lol/15.24.1/champion/${match.info.participants[9].championName}.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto:good,f_webp,w_160,h_160&v=1524">
+                                                    <span>${match.info.participants[9].champLevel}</span>
+                                                </div>
+                                                <div class="table-player-sums-runes">
+                                                    <div class="table-player-sums">
+                                                        <img src="img/summonerspells/${match.info.participants[9].summoner1Id}.png">
+                                                        <img src="img/summonerspells/${match.info.participants[9].summoner2Id}.png">
+                                                    </div>
+                                                    <div class="table-player-runes">
+                                                        <img src="img/runes/${match.info.participants[9].perks.styles[0].selections[0].perk}.png">
+                                                        <img src="img/runes/${match.info.participants[9].perks.styles[1].style}.png">
+                                                    </div>
+                                                </div>
+                                                <div class="table-player-name">
+                                                    <span><a target="_blank" href="${opgg}${match.info.participants[9].riotIdGameName}-${match.info.participants[9].riotIdTagline}">${match.info.participants[9].riotIdGameName}<a/></span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th>score</th>
+                                        <th>
+                                            <div class="table-player-kda">
+                                                <span>${match.info.participants[9].kills}/${match.info.participants[9].deaths}/${match.info.participants[9].assists} (${(match.info.participants[9].challenges.killParticipation * 100).toFixed()}%)</span>
+                                                <span>${(match.info.participants[9].challenges.kda).toFixed(2)}</span>
+                                            </div>
+                                            
+                                        </th>
+                                        <th>
+                                            <div class="table-player-dmg">
+                                                <span>${(match.info.participants[9].totalDamageDealtToChampions).toLocaleString()}</span>
+                                                <span>${(match.info.participants[9].challenges.teamDamagePercentage * 100).toFixed()}%</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-cs">
+                                                <span>${(match.info.participants[9].totalMinionsKilled + match.info.participants[9].neutralMinionsKilled)}</span>
+                                                <span>${((match.info.participants[9].totalMinionsKilled + match.info.participants[9].neutralMinionsKilled) / minutes).toFixed(1)}/m</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="table-player-all-items">
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[9].item0}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[9].item1}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[9].item2}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[9].item3}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[9].item4}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[9].item5}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[9].item6}.png" onerror="this.style.display ='none'"></div>
+                                                <div class="table-player-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.1.1/img/item/${match.info.participants[9].roleBoundItem}.png" onerror="this.style.display ='none'"></div>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                `
+
+
+
                 
 
                 
@@ -336,7 +957,7 @@ function pushDataOnPage(playerlist, playername) {
                         </div>`;
                 if (rankData[0]) {
                     let winrate;
-                    winrate = rankData[0].wins / rankData[0].losses * 100;
+                    winrate = (rankData[0].wins / (rankData[0].wins + rankData[0].losses) * 100).toFixed();
 
                     profile += `<div class="rank-wr">
                                     <div class="winrate">
@@ -379,6 +1000,7 @@ function pushDataOnPage(playerlist, playername) {
     document.querySelector('.profile-header').innerHTML = profile;
     document.querySelector('.txtranked').innerHTML = match5;
     document.querySelector('.profile-matchs').innerHTML = html;
+    document.querySelector('.loading-data').innerHTML = "";
 }
 
 
@@ -388,6 +1010,26 @@ async function executeAll() {
     await getRank(puuid[player]);
     await getAllMatchsData(player);
     pushDataOnPage(matchesData, player);
+
+    for (let i = 1; i <= 5; i++) {
+        const btn = document.querySelector(`.btn-table-open-${i}`);
+        const bloc = document.getElementById(`moredata${i}`);
+
+        btn.addEventListener('click', () => {
+            if (bloc.style.display === "none" || bloc.style.display === "") {
+                bloc.style.display = "initial";
+                btn.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
+            } else {
+                bloc.style.display = "none";
+                btn.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
+            }
+        });
+    }
+
+
+
+
 }
 
 executeAll();
+
