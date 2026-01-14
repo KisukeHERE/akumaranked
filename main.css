@@ -422,6 +422,7 @@ footer {
 .profile-img {
   height: 100px;
   width: 100px;
+  pointer-events: none;
   
 }
 
@@ -601,6 +602,7 @@ footer {
   height: 50px;
   width: 50px;
   border-radius: 50%;
+  pointer-events: none;
   
 }
 
@@ -627,6 +629,7 @@ footer {
 .champion-spells-runes {
   display: flex;
   margin-left: 10px;
+  pointer-events: none;
 }
 
 .champion-runes,
@@ -681,6 +684,7 @@ footer {
   margin-top: 5px;
   justify-content: space-evenly;
   align-items: center;
+  pointer-events: none;
 }
 
 .champion-items img {
@@ -715,6 +719,7 @@ footer {
   display: flex;
   height: 80px;
   width: 170px;
+  
 }
 
 .game-players-bside,
@@ -1173,7 +1178,6 @@ footer {
     color: #d9dafc;
     text-transform: uppercase;
     margin-left: 10px;
-    text-shadow: 0 0 20px #d9dafca2;
     margin-top: -20px;
   }
 
@@ -1341,7 +1345,6 @@ footer {
     font: 700 1rem "Satoshi", sans-serif;
     color: #d9dafc;
     text-transform: uppercase;
-    text-shadow: 0 0 20px #d9dafca2;
     margin-top: -20px;
   }
 
@@ -1444,6 +1447,10 @@ footer {
     justify-content: left;
   }
 
+  .item-bg {
+    margin-right: 2px;
+  }
+
   .match-infos {
     font: 400 0.7rem "Satoshi";
   }
@@ -1456,7 +1463,8 @@ footer {
 
   .champion-kpcs {
     font: 500 0.6rem "Satoshi";
-    
+    width: 45px;
+    white-space: nowrap;
   }
 
 
@@ -1581,7 +1589,6 @@ footer {
     color: #d9dafc;
     text-transform: uppercase;
     margin-left: 30px;
-    text-shadow: 0 0 20px #d9dafca2;
     margin-top: -20px;
   }
 
@@ -1655,17 +1662,15 @@ footer {
 
 
   .profile-header {
-    width: 440px;
-    
+    width: 90vw;
   }
 
 
   .profile-infos {
-    width: 150px;
-    
+    width: 30vw;
   }
   .profile-infos span {
-    width: 150px;
+    width: auto;
 
   }
 
@@ -1717,7 +1722,9 @@ footer {
 
   .match-recap {
     height: 90px;
-    width: 400px;
+    min-width: 400px;
+    width: 80vw;
+    max-width: 500px;
     border-radius: 20px;
     margin-top: 10px;
     padding: 10px;
@@ -1765,6 +1772,12 @@ footer {
     width: 22px;
   }
 
+
+  .item-bg {
+    height: 22px;
+    width: 22px;
+  }
+
   .champion-runes img {
     height: 18px;
     width: 18px;
@@ -1782,6 +1795,11 @@ footer {
   .champion-items img {
     border-radius: 5px;
     box-shadow: 0 0 10px #010213;
+    height: 20px;
+    width: 20px;
+  }
+
+  .item-bg {
     height: 20px;
     width: 20px;
   }
@@ -1812,7 +1830,9 @@ footer {
 
   .moredata {
     background-color: #010213;
-    width: 400px;
+    min-width: 400px;
+    width: 80vw;
+    max-width: 500px;
     height: 460px;
     border-radius: 10px;
     margin-top: 5px;
@@ -1920,7 +1940,6 @@ footer {
     color: #d9dafc;
     text-transform: uppercase;
     margin-left: 30px;
-    text-shadow: 0 0 20px #d9dafca2;
     margin-top: -20px;
   }
 
@@ -1997,7 +2016,9 @@ footer {
   }
 
   .profile-header {
-    width: 350px;
+    min-width: 340px;
+    width: 90vw;
+    max-width: 400px;
     height: 80px;
     grid-template-columns: 80px 400px;
     grid-column-gap: 15px;
@@ -2084,7 +2105,8 @@ footer {
 
   .match-recap {
     height: 90px;
-    width: 300px;
+    min-width: 200px;
+    width: 90vw;
     border-radius: 20px;
     margin-top: 10px;
     padding: 10px;
@@ -2130,6 +2152,11 @@ footer {
     width: 22px;
   }
 
+  .item-bg {
+    height: 22px;
+    width: 22px;
+}
+
   .champion-runes img {
     height: 16px;
     width: 16px;
@@ -2144,6 +2171,8 @@ footer {
     margin-bottom: 5px;
     filter: drop-shadow(0 0 5px #010213);
   }
+
+
   .champion-items img {
     border-radius: 5px;
     box-shadow: 0 0 10px #010213;
@@ -2151,7 +2180,10 @@ footer {
     width: 20px;
   }
 
-
+  .item-bg {
+    height: 20px;
+    width: 20px;
+  }
 
   .champion-kpcs {
     font: 500 0.6rem "Satoshi";
@@ -2173,7 +2205,8 @@ footer {
 
   .moredata {
     background-color: #010213;
-    width: 300px;
+    min-width: 200px;
+    width: 90vw;
     height: 460px;
     border-radius: 10px;
     margin-top: 5px;
@@ -2224,7 +2257,7 @@ footer {
 
   .moredata {
     background-color: #010213;
-    width: 400px;
+    width: 300px;
     height: 460px;
     border-radius: 10px;
     margin-top: 5px;
