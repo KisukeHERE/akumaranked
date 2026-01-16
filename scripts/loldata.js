@@ -33,7 +33,7 @@ let matchesData = [];
 
 let sumsJson = [];
 
-const APIKEY = 'RGAPI-d73a0ce5-a6fc-4470-9b6b-eb81e312e462';
+const APIKEY = 'RGAPI-8ca85e71-a700-46c3-bdfb-1b8b4ad0ce8f';
 const linkMatches = 'https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/';
 const linkRank = 'https://euw1.api.riotgames.com/lol/league/v4/entries/by-puuid/';
 const linkMatchData = 'https://europe.api.riotgames.com/lol/match/v5/matches/';
